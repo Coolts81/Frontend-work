@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initialscale=1.0">
+<title>After School Subjects</title>
+</head>
+<body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<div id="mydiv">
+
+
+<h1 class="introtitle">{{message}}</h1>
+<p>Here is the list all of the subjects avaliable : {{ message }}</p>
+<p>My sister's age is: {{SistersAge}}</p>
+<p>Size of mustache is: {{mustachesize}}</p>
+<img :src="image" alt="My Cat">
+</div>
+
+<script type="module">
+    const {createApp} = Vue
+    const myApp = createApp({
+
+        data() {
+        return {
+        message: 'Hello, (Name)',
+        message2: "Our list of school subjects",
+        Subject1: "Maths",
+        SistersAge: 20,
+        mustachesize: "XXL",
+        image: 'images/images.jpeg',
+        price: 2000,
+        }
+        }
+        })
+        myApp.mount('#mydiv')
+</script>
+
+<style>
+    body {
+        background-color: #02ff9e;
+    }
+
+    .introtitle{
+        text-align: center;
+    }
+</style>
+
+</body>
+</html>

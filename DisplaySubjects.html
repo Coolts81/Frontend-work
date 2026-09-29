@@ -10,8 +10,8 @@
 <div id="mydiv">
 
 
-<h1>{{message}}</h1>
-<p>Here is a message: {{ message }}</p>
+<h1 class="introtitle">{{message}}</h1>
+<p>Here is the list all of the subjects avaliable : {{ message }}</p>
 <p>My sister's age is: {{SistersAge}}</p>
 <p>Size of mustache is: {{mustachesize}}</p>
 <img :src="image" alt="My Cat">
@@ -25,6 +25,7 @@
         return {
         message: 'Hello, (Name)',
         message2: "Our list of school subjects",
+        Subject1: "Maths",
         SistersAge: 20,
         mustachesize: "XXL",
         image: 'images/images.jpeg',
@@ -35,11 +36,13 @@
         myApp.mount('#mydiv')
 </script>
 
-fjfhckfkfkfjfkf
-
 <style>
     body {
         background-color: #02ff9e;
+    }
+
+    .introtitle{
+        text-align: center;
     }
 </style>
 
