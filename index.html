@@ -7,14 +7,24 @@
 </head>
 <body>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
 <div id="mydiv">
-
-
 <h1 class="introtitle">{{message}}</h1>
-<p>Here is the list all of the subjects avaliable : {{ message }}</p>
-<p>My sister's age is: {{SistersAge}}</p>
-<p>Size of mustache is: {{mustachesize}}</p>
-<img :src="image" alt="My Cat">
+<center>
+<p>{{ message2 }}</p>
+</center>
+<br>
+<h1>{{ Subject1 }}</h1>
+<img :src="image" alt="Maths" class = "maths-size">
+<h4>{{ description1 }}</h4>
+<h4>{{ description2 }}</h4>
+<h4>The price is: £{{ price1 }}</h4>
+<br>
+</div>
+
+<div id="mydiv2">
+<h1>{{ Subject2 }}</h1>
+
 </div>
 
 <script type="module">
@@ -24,12 +34,12 @@
         data() {
         return {
         message: 'Hello, (Name)',
-        message2: "Our list of school subjects",
-        Subject1: "Maths",
-        SistersAge: 20,
-        mustachesize: "XXL",
-        image: 'images/images.jpeg',
-        price: 2000,
+        message2: "Here is the list of all our school subjects avaliable",
+        Subject1: "Subject 1: Maths",
+        description1: "Purchase maths if your child is interested into the study of numbers and symbols",
+        description2: "Mathematics is the language in which God has written the universe",
+        price1: 200,
+        image: 'School Images/Maths.png',
         }
         }
         })
@@ -43,6 +53,11 @@
 
     .introtitle{
         text-align: center;
+    }
+
+    .maths-size{
+        width:250px;
+        height:250px;
     }
 </style>
 
