@@ -15,15 +15,41 @@
 </center>
 <br>
 <h1>{{ Subject1 }}</h1>
-<img :src="image" alt="Maths" class = "maths-size">
+<img class = "MathsImage" :src="images[0]" style="margin-left: 20px;">
 <h4>{{ description1 }}</h4>
 <h4>{{ description2 }}</h4>
-<h4>The price is: £{{ price1 }}</h4>
+<h4>Price: £{{ price1 }}</h4>
 <br>
-</div>
 
-<div id="mydiv2">
 <h1>{{ Subject2 }}</h1>
+<img class = "EnglishImage" :src="images[1]" style="margin-left: 50px;">
+<h4>{{description3}}</h4>
+<h4>Price: £{{ price2 }}</h4>
+
+<h1>{{ Subject3 }}</h1>
+<img class = "ScienceImage" :src="images[2]" style="margin-left: 50px;">
+<h4>{{description4}}</h4>
+<h4>Price: £{{ price3 }}</h4>
+
+<h1>{{ Subject4 }}</h1>
+<img class = "ComputerScienceImage" :src="images[4]" style="margin-left: 50px;">
+<h4>{{description5}}</h4>
+<h4>Price: £{{ price4 }}</h4>
+
+<h1>{{ Subject5 }}</h1>
+<img class = "EconomicsImage" :src="images[5]" style="margin-left: 50px;">
+<h4>{{description6}}</h4>
+<h4>Price: £{{ price5 }}</h4>
+
+<h1>{{ Subject6 }}</h1>
+<img class = "GeographyImage" :src="images[6]" style="margin-left: 50px;">
+<h4>{{description7}}</h4>
+<h4>Price: £{{ price6 }}</h4>
+
+<h1>{{ Subject7 }}</h1>
+<img class = "HistoryImage" :src="images[6]" style="margin-left: 50px;">
+<h4>{{description8}}</h4>
+<h4>Price: £{{ price7 }}</h4>
 
 </div>
 
@@ -33,13 +59,52 @@
 
         data() {
         return {
-        message: 'Hello, (Name)',
-        message2: "Here is the list of all our school subjects avaliable",
-        Subject1: "Subject 1: Maths",
-        description1: "Purchase maths if your child is interested into the study of numbers and symbols",
-        description2: "Mathematics is the language in which God has written the universe",
-        price1: 200,
-        image: 'School Images/Maths.png',
+            message: 'Hello',
+            message2: "Here is the list of all our school subjects avaliable",
+            
+            Subject1: "Subject 1: Maths",
+            description1: "Purchase maths if your child is interested into the study of numbers and symbols",
+            description2: "Mathematics is the language in which God has written the universe",
+            price1: 200,
+
+            Subject2: "Subject 2: English",
+            description3: "Purchase english if your child is interested to improve in writing, reading, spelling, poetry and communication",
+            price2: 200,
+
+            Subject3: "Subject 3: Science",
+            description4: "If you love science and you want to improve on it, science is the way. You'll explore experiements, chemicals, nature, earth and more!",
+            price3: 200,
+
+            Subject4: "Subject 4: Computer Science",
+            description5: "Do you love technology and want to improve your tech skills, do you want to be best at coding, theory and curious about how gadgets, apps and games work. Join our computer science study",
+            price4: 250,
+
+            Subject5: "Subject 5: Economics",
+            description6: "Ecouraging children to work out the cost of shopping and comparing offers so they can understand the value of goods. Figuring out how the economy works and where money comes from",
+            price5: 150,
+
+            Subject6: "Subject 6: Geography",
+            description7: "Understanding how the world works, elements that contains the earth making. Where things are in terms of oceans, countries, capital, cities. Studying human and physical geograpghy to do with farming, cities, trade, climate change",
+            price6: 100,
+
+            Subject7: "Subject 7: History",
+            description8: "Wanna learn historical facts, to study the dates, time periods of anglo saxon period, cold war, nazi germany and many more. Learning about the history that shapes britain, russia, germany, china and other countries involved",
+            price7: 150,
+
+            Subject7: "Subject 8: Religious Studies",
+            description8: "Studying christianity, buddasim, islam, jewish, sikhism to understand how they work, how they operate, what they believe in and how it impacts people's lives everyday. Interested in the study of religions and about God, this course is for you!",
+            price7: 150,
+
+            images: [
+                'School Images/Maths.png',
+                'School Images/English.png',
+                'School Images/Science.png',
+                'School Images/Computer Science.png',
+                'School Images/Economics.png',
+                'School Images/Geography.png',
+                'School Images/History.png',
+                'School Images/Religious Studies.png',
+            ]
         }
         }
         })
@@ -55,9 +120,14 @@
         text-align: center;
     }
 
-    .maths-size{
+    .MathsImage{
         width:250px;
         height:250px;
+    }
+
+    .EnglishImage{
+        width: 350px;
+        height: 350px;
     }
 </style>
 
