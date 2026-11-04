@@ -15,41 +15,48 @@
 </center>
 <br>
 <h1>{{ Subject1 }}</h1>
-<img class = "MathsImage" :src="images[0]" style="margin-left: 20px;">
+<img class = "MathsImage" :src="Schoolimages[0]">
 <h4>{{ description1 }}</h4>
 <h4>{{ description2 }}</h4>
 <h4>Price: £{{ price1 }}</h4>
 <br>
 
-<h1>{{ Subject2 }}</h1>
-<img class = "EnglishImage" :src="images[1]" style="margin-left: 50px;">
-<h4>{{description3}}</h4>
-<h4>Price: £{{ price2 }}</h4>
+<div class = "Subject2">
+    <h1>{{ Subject2 }}</h1>
+    <img class = "EnglishImage" :src="Schoolimages[1]">
+    <h4>{{description3}}</h4>
+    <h4>Price: £{{ price2 }}</h4>
+</div>
 
 <h1>{{ Subject3 }}</h1>
-<img class = "ScienceImage" :src="images[2]" style="margin-left: 50px;">
+<img class = "ScienceImage" :src="Schoolimages[2]">
 <h4>{{description4}}</h4>
 <h4>Price: £{{ price3 }}</h4>
 
 <h1>{{ Subject4 }}</h1>
-<img class = "ComputerScienceImage" :src="images[4]" style="margin-left: 50px;">
+<img class = "ComputerScienceImage" :src="Schoolimages[3]">
 <h4>{{description5}}</h4>
 <h4>Price: £{{ price4 }}</h4>
 
 <h1>{{ Subject5 }}</h1>
-<img class = "EconomicsImage" :src="images[5]" style="margin-left: 50px;">
+<img class = "EconomicsImage" :src="Schoolimages[4]">
 <h4>{{description6}}</h4>
 <h4>Price: £{{ price5 }}</h4>
 
 <h1>{{ Subject6 }}</h1>
-<img class = "GeographyImage" :src="images[6]" style="margin-left: 50px;">
+<img class = "GeographyImage" :src="Schoolimages[5]">
 <h4>{{description7}}</h4>
 <h4>Price: £{{ price6 }}</h4>
 
 <h1>{{ Subject7 }}</h1>
-<img class = "HistoryImage" :src="images[6]" style="margin-left: 50px;">
+<img class = "HistoryImage" :src="Schoolimages[6]">
 <h4>{{description8}}</h4>
 <h4>Price: £{{ price7 }}</h4>
+
+<h1>{{ Subject8 }}</h1>
+<img class = "ReligiousStudiesImage" :src="Schoolimages[7]">
+<h4>{{description9}}</h4>
+<h4>Price: £{{ price8 }}</h4>
 
 </div>
 
@@ -91,11 +98,11 @@
             description8: "Wanna learn historical facts, to study the dates, time periods of anglo saxon period, cold war, nazi germany and many more. Learning about the history that shapes britain, russia, germany, china and other countries involved",
             price7: 150,
 
-            Subject7: "Subject 8: Religious Studies",
-            description8: "Studying christianity, buddasim, islam, jewish, sikhism to understand how they work, how they operate, what they believe in and how it impacts people's lives everyday. Interested in the study of religions and about God, this course is for you!",
-            price7: 150,
+            Subject8: "Subject 8: Religious Studies",
+            description9: "Studying christianity, buddasim, islam, jewish, sikhism to understand how they work, how they operate, what they believe in and how it impacts people's lives everyday. Interested in the study of religions and about God, this course is for you!",
+            price8: 100,
 
-            images: [
+            Schoolimages: [
                 'School Images/Maths.png',
                 'School Images/English.png',
                 'School Images/Science.png',
@@ -121,13 +128,50 @@
     }
 
     .MathsImage{
-        width:250px;
-        height:250px;
+        width:300px;
+        height:300px;
+        position: relative;        
+        left: 30px;
     }
 
     .EnglishImage{
-        width: 350px;
-        height: 350px;
+        width: 300px;
+        height: 300px;
+    }
+
+    .ScienceImage{
+        width: 300px;
+        height: 300px;
+    }
+
+    .ComputerScienceImage{
+        width: 300px;
+        height: 300px;
+    }
+
+    .EconomicsImage{
+        width: 300px;
+        height: 300px;
+    }
+    
+    .GeographyImage{
+        width: 300px;
+        height: 300px;
+    }
+
+    .HistoryImage{
+        width: 300px;
+        height: 300px;
+    }
+
+    .ReligiousStudiesImage{
+        width: 300px;
+        height: 300px;
+    }
+
+    .Subject2{
+        position: relative;
+        left: 30px;
     }
 </style>
 
