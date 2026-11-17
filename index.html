@@ -13,13 +13,14 @@
 <center>
 <p>{{ message2 }}</p>
 </center>
-<br>
-<h1>{{ Subject1 }}</h1>
-<img class = "MathsImage" :src="Schoolimages[0]">
-<h4>{{ description1 }}</h4>
-<h4>{{ description2 }}</h4>
-<h4>Price: £{{ price1 }}</h4>
-<br>
+
+<div class = "Subject1">
+    <h1>{{ Subject1 }}</h1>
+    <img class = "MathsImage" :src="Schoolimages[0]">
+    <h4>{{ description1 }}</h4>
+    <h4>{{ description2 }}</h4>
+    <h4>Price: £{{ price1 }}</h4>
+</div>
 
 <div class = "Subject2">
     <h1>{{ Subject2 }}</h1>
@@ -28,35 +29,48 @@
     <h4>Price: £{{ price2 }}</h4>
 </div>
 
-<h1>{{ Subject3 }}</h1>
-<img class = "ScienceImage" :src="Schoolimages[2]">
-<h4>{{description4}}</h4>
-<h4>Price: £{{ price3 }}</h4>
+<div class = "Subject3">
+    <h1>{{ Subject3 }}</h1>
+    <img class = "ScienceImage" :src="Schoolimages[2]">
+    <h4>{{description4}}</h4>
+    <h4>{{description4e}}</h4>
+    <h4>Price: £{{ price3 }}</h4>
+</div>
 
-<h1>{{ Subject4 }}</h1>
-<img class = "ComputerScienceImage" :src="Schoolimages[3]">
-<h4>{{description5}}</h4>
-<h4>Price: £{{ price4 }}</h4>
+<div class = "Subject4">
+    <h1>{{ Subject4 }}</h1>
+    <img class = "ComputerScienceImage" :src="Schoolimages[3]">
+    <h4>{{description5}}</h4>
+    <h4>Price: £{{ price4 }}</h4>
+</div>
 
-<h1>{{ Subject5 }}</h1>
-<img class = "EconomicsImage" :src="Schoolimages[4]">
-<h4>{{description6}}</h4>
-<h4>Price: £{{ price5 }}</h4>
+<div class = "Subject5">
+    <h1>{{ Subject5 }}</h1>
+    <img class = "EconomicsImage" :src="Schoolimages[4]">
+    <h4>{{description6}}</h4>
+    <h4>Price: £{{ price5 }}</h4>
+</div>
 
-<h1>{{ Subject6 }}</h1>
-<img class = "GeographyImage" :src="Schoolimages[5]">
-<h4>{{description7}}</h4>
-<h4>Price: £{{ price6 }}</h4>
+<div class = "Subject6">
+    <h1>{{ Subject6 }}</h1>
+    <img class = "GeographyImage" :src="Schoolimages[5]">
+    <h4>{{description7}}</h4>
+    <h4>Price: £{{ price6 }}</h4>
+</div>
 
-<h1>{{ Subject7 }}</h1>
-<img class = "HistoryImage" :src="Schoolimages[6]">
-<h4>{{description8}}</h4>
-<h4>Price: £{{ price7 }}</h4>
+<div class = "Subject7">
+    <h1>{{ Subject7 }}</h1>
+    <img class = "HistoryImage" :src="Schoolimages[6]">
+    <h4>{{description8}}</h4>
+    <h4>Price: £{{ price7 }}</h4>
+</div>
 
-<h1>{{ Subject8 }}</h1>
-<img class = "ReligiousStudiesImage" :src="Schoolimages[7]">
-<h4>{{description9}}</h4>
-<h4>Price: £{{ price8 }}</h4>
+<div class = "Subject8">
+    <h1>{{ Subject8 }}</h1>
+    <img class = "ReligiousStudiesImage" :src="Schoolimages[7]">
+    <h4>{{description9}}</h4>
+    <h4>Price: £{{ price8 }}</h4>
+</div>
 
 </div>
 
@@ -79,7 +93,8 @@
             price2: 200,
 
             Subject3: "Subject 3: Science",
-            description4: "If you love science and you want to improve on it, science is the way. You'll explore experiements, chemicals, nature, earth and more!",
+            description4: "If you love science and you want to improve on it, science is the way.",
+            descirption4e: "You'll explore experiements, chemicals, nature, earth and more!",
             price3: 200,
 
             Subject4: "Subject 4: Computer Science",
@@ -169,9 +184,22 @@
         height: 300px;
     }
 
+    .Subject1{
+        position: relative;
+        left: 50px;
+        top: 40px;
+    }
+
     .Subject2{
         position: relative;
-        left: 30px;
+        left: 650px;
+        top: -465px;
+    }
+
+    .Subject3{
+        position: relative;
+        left: 50px;
+        top: -405px;
     }
 </style>
 
