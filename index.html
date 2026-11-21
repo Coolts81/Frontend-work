@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initialscale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <title>After School Subjects</title>
 </head>
 <body>
@@ -12,64 +14,23 @@
 <h1 class="introtitle">{{message}}</h1>
 <center>
 <p>{{ message2 }}</p>
+<p>{{ CartMessage }}</p>
 </center>
 
-<div class = "Subject1">
-    <h1>{{ Subject1 }}</h1>
-    <img class = "MathsImage" :src="Schoolimages[0]">
-    <h4>{{ description1 }}</h4>
-    <h4>{{ description2 }}</h4>
-    <h4>Price: £{{ price1 }}</h4>
-</div>
+<button class = "ButtonCheckoutDesign" @click="toggleCheckout">
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout ({{cartItemCount}})
+</button>
 
-<div class = "Subject2">
-    <h1>{{ Subject2 }}</h1>
-    <img class = "EnglishImage" :src="Schoolimages[1]">
-    <h4>{{description3}}</h4>
-    <h4>Price: £{{ price2 }}</h4>
-</div>
-
-<div class = "Subject3">
-    <h1>{{ Subject3 }}</h1>
-    <img class = "ScienceImage" :src="Schoolimages[2]">
-    <h4>{{description4}}</h4>
-    <h4>{{description4e}}</h4>
-    <h4>Price: £{{ price3 }}</h4>
-</div>
-
-<div class = "Subject4">
-    <h1>{{ Subject4 }}</h1>
-    <img class = "ComputerScienceImage" :src="Schoolimages[3]">
-    <h4>{{description5}}</h4>
-    <h4>Price: £{{ price4 }}</h4>
-</div>
-
-<div class = "Subject5">
-    <h1>{{ Subject5 }}</h1>
-    <img class = "EconomicsImage" :src="Schoolimages[4]">
-    <h4>{{description6}}</h4>
-    <h4>Price: £{{ price5 }}</h4>
-</div>
-
-<div class = "Subject6">
-    <h1>{{ Subject6 }}</h1>
-    <img class = "GeographyImage" :src="Schoolimages[5]">
-    <h4>{{description7}}</h4>
-    <h4>Price: £{{ price6 }}</h4>
-</div>
-
-<div class = "Subject7">
-    <h1>{{ Subject7 }}</h1>
-    <img class = "HistoryImage" :src="Schoolimages[6]">
-    <h4>{{description8}}</h4>
-    <h4>Price: £{{ price7 }}</h4>
-</div>
-
-<div class = "Subject8">
-    <h1>{{ Subject8 }}</h1>
-    <img class = "ReligiousStudiesImage" :src="Schoolimages[7]">
-    <h4>{{description9}}</h4>
-    <h4>Price: £{{ price8 }}</h4>
+<div v-for="subject in SchoolSubjects"
+    :id = "'groove' + subject.id"
+    :class = "'Subject' + subject.id">
+    <h1>{{subject.name}}</h1>
+    <img :class="'Image' + subject.id" v-bind:src="subject.image">
+    <h4>{{subject.description}}</h4>
+    <h4>{{subject.description2}}</h4>
+    <h4>Price: £{{subject.price}}</h4>
+    <h4> Avaliability: {{subject.avaliability}}</h4>
+    <button v-on:click="addItem()" v-bind="canAddToCart">Add to Cart</button>
 </div>
 
 </div>
@@ -80,57 +41,88 @@
 
         data() {
         return {
+            CartMessage: "Cart",
             message: 'Hello',
             message2: "Here is the list of all our school subjects avaliable",
+            cart: [],
             
-            Subject1: "Subject 1: Maths",
-            description1: "Purchase maths if your child is interested into the study of numbers and symbols",
-            description2: "Mathematics is the language in which God has written the universe",
-            price1: 200,
+            SchoolSubjects:[
+                {
+                    id: 1,
+                    name: "Subject 1: Maths",
+                    description: "Purchase maths if your child is interested into the study of numbers and symbols",
+                    description2: "Mathematics is the language in which God has written the universe",
+                    price: 200,
+                    image: 'School Images/Maths.png',
+                    avaliability: 5,
+                },
+                {
+                    id: 2,
+                    name: "Subject 2: English",
+                    description: "Purchase english if your child is interested to improve in writing, reading, spelling, poetry and communication",
+                    price: 200,
+                    image: 'School Images/English.png',
+                    avaliablity: 5,
+                },
+                {
+                    id: 3,
+                    name: "Subject 3: Science",
+                    description: "If you love science and you want to improve on it, science is the way.",
+                    description2: "You'll explore experiements, chemicals, nature, earth and more!",
+                    price: 200,
+                    image: 'School Images/Science.png',
+                    avaliability: 5,
+                },
+                {
+                    id: 4,
+                    name: "Subject 4: Computer Science",
+                    description: "Do you love technology and want to improve your tech skills, do you want to be best at coding, theory and curious about how gadgets, apps and games work. Join our computer science study",
+                    price: 250,
+                    image: 'School Images/Computer Science.png',
+                    avaliability: 5, 
+                },
+                {
+                    id: 5,
+                    name: "Subject 5: Economics",
+                    description: "Ecouraging children to work out the economy and to understand the value of goods.",
+                    description2: "Figuring out how the economy works and where money comes from",
+                    price: 150,
+                    image: 'School Images/Economics.png',
+                    avaliability: 5,
+                },
+                {
+                    id: 6,
+                    name: "Subject 6: Geography",
+                    description: "Understanding how the world works, elements that contains the earth making in terms of oceans, countries, capital, cities. Studying human and physical geograpghy to do with farming, cities, trade, climate change",
+                    price: 100,
+                    image: 'School Images/Geography.png',
+                    avaliability: 5,
+                },
+                {
+                    id: 7,
+                    name: "Subject 7: History",
+                    description: "Wanna learn historical facts, time periods of anglo saxon period, cold war, nazi germany and many more.",
+                    description2: "Learning about the history that shapes britain, russia, germany, china and other countries involved",
+                    price: 150,
+                    image: 'School Images/History.png',
+                    avaliability: 5,
+                },
+                {
 
-            Subject2: "Subject 2: English",
-            description3: "Purchase english if your child is interested to improve in writing, reading, spelling, poetry and communication",
-            price2: 200,
-
-            Subject3: "Subject 3: Science",
-            description4: "If you love science and you want to improve on it, science is the way.",
-            descirption4e: "You'll explore experiements, chemicals, nature, earth and more!",
-            price3: 200,
-
-            Subject4: "Subject 4: Computer Science",
-            description5: "Do you love technology and want to improve your tech skills, do you want to be best at coding, theory and curious about how gadgets, apps and games work. Join our computer science study",
-            price4: 250,
-
-            Subject5: "Subject 5: Economics",
-            description6: "Ecouraging children to work out the cost of shopping and comparing offers so they can understand the value of goods. Figuring out how the economy works and where money comes from",
-            price5: 150,
-
-            Subject6: "Subject 6: Geography",
-            description7: "Understanding how the world works, elements that contains the earth making. Where things are in terms of oceans, countries, capital, cities. Studying human and physical geograpghy to do with farming, cities, trade, climate change",
-            price6: 100,
-
-            Subject7: "Subject 7: History",
-            description8: "Wanna learn historical facts, to study the dates, time periods of anglo saxon period, cold war, nazi germany and many more. Learning about the history that shapes britain, russia, germany, china and other countries involved",
-            price7: 150,
-
-            Subject8: "Subject 8: Religious Studies",
-            description9: "Studying christianity, buddasim, islam, jewish, sikhism to understand how they work, how they operate, what they believe in and how it impacts people's lives everyday. Interested in the study of religions and about God, this course is for you!",
-            price8: 100,
-
-            Schoolimages: [
-                'School Images/Maths.png',
-                'School Images/English.png',
-                'School Images/Science.png',
-                'School Images/Computer Science.png',
-                'School Images/Economics.png',
-                'School Images/Geography.png',
-                'School Images/History.png',
-                'School Images/Religious Studies.png',
-            ]
+                    id: 8,
+                    name: "Subject 8: Religious Studies",
+                    description: "Studying christianity, buddasim, islam, jewish, sikhism to understand how they work, how they operate, what they believe in and how it impacts people's lives everyday.",
+                    description2: "Interested in the study of religions and about God, this course is for you!",
+                    price: 100,
+                    image: 'School Images/Religious Studies.png',
+                    avaliability: 5,
+                },
+        ]
         }
         }
         })
         myApp.mount('#mydiv')
+
 </script>
 
 <style>
@@ -142,65 +134,176 @@
         text-align: center;
     }
 
-    .MathsImage{
+    .Image1{
         width:300px;
         height:300px;
-        position: relative;        
-        left: 30px;
+        position: relative;   
+        left: 110px;
     }
 
-    .EnglishImage{
+    .Image2{
         width: 300px;
         height: 300px;
+        position: relative;   
+        left: 110px;
     }
 
-    .ScienceImage{
+    .Image3{
         width: 300px;
         height: 300px;
+        position: relative;   
+        left: 110px;
     }
 
-    .ComputerScienceImage{
+    .Image4{
         width: 300px;
         height: 300px;
+        position: relative;   
+        left: 110px;
     }
 
-    .EconomicsImage{
-        width: 300px;
+    .Image5{
+        width: 400px;
         height: 300px;
+        position: relative;   
+        left: 80px;
     }
     
-    .GeographyImage{
-        width: 300px;
+    .Image6{
+        width: 400px;
         height: 300px;
+        position: relative;   
+        left: 80px;
     }
 
-    .HistoryImage{
-        width: 300px;
+    .Image7{  
+        width: 400px;
         height: 300px;
+        position: relative;  
+        left: 80px;
     }
 
-    .ReligiousStudiesImage{
+    .Image8{
         width: 300px;
         height: 300px;
+        position: relative;   
+        left: 110px;
     }
 
     .Subject1{
         position: relative;
         left: 50px;
-        top: 40px;
+        top: 100px;
     }
 
     .Subject2{
         position: relative;
-        left: 650px;
-        top: -465px;
+        left: 780px;
+        top: -505px;
     }
 
     .Subject3{
         position: relative;
         left: 50px;
-        top: -405px;
+        top: -340px;
     }
+
+    .Subject4{
+        position: relative;
+        left: 780px;
+        top: -955px;
+    }
+
+    .Subject5{
+        position: relative;
+        left: 50px;
+        top: -780px;
+    }
+
+    .Subject6{
+        position: relative;
+        left: 780px;
+        top: -1400px;
+    }
+
+    .Subject7{
+        position: relative;
+        left: 50px;
+        top: -1195px;
+    }
+
+    .Subject8{
+        position: relative;
+        left: 780px;
+        top: -1845px;
+    }
+
+    #groove1 {
+        border-width: 15px;
+        width: 560px;
+        border-style: groove;
+        border-color: #0523e9
+    }
+
+    #groove2 {
+        border-width: 15px;
+        width: 560px;
+        border-style: groove;
+        border-color: #e10707
+    }
+
+    #groove3 {
+        border-width: 15px;
+        width: 560px;
+        border-style: groove;
+        border-color: #0eed2f
+    }
+
+    #groove4 {
+        border-width: 15px;
+        width: 560px;
+        border-style: groove;
+        border-color: #a509cc
+    }
+
+    #groove5 {
+        border-width: 15px;
+        width: 560px;
+        border-style: groove;
+        border-color: #ec7506
+    }
+
+    #groove6 {
+        border-width: 15px;
+        width: 560px;
+        border-style: groove;
+        border-color: #0ae766
+    }
+
+    #groove7 {
+        border-width: 15px;
+        width: 560px;
+        border-style: groove;
+        border-color: #572705
+    }
+
+    #groove8 {
+        border-width: 15px;
+        width: 560px;
+        border-style: groove;
+        border-color: #e90de1
+    }
+
+    .ButtonCheckoutDesign{
+        background-color: #e10707;
+        color: black;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        position: relative;
+        left: 1200px;
+    }
+
 </style>
 
 </body>
