@@ -30,7 +30,7 @@
     <h4>{{subject.description2}}</h4>
     <h4>Price: £{{subject.price}}</h4>
     <h4> Avaliability: {{subject.avaliability}}</h4>
-    <button v-on:click="addItem()" v-bind="canAddToCart">Add to Cart</button>
+    <button class = "CartButtonDesign" v-on:click="addItem()" v-show="canAddToCart">Add to Cart</button>
 </div>
 
 </div>
@@ -119,6 +119,20 @@
                 },
         ]
         }
+        },
+        computed: {
+            canAddToCart(){
+                return this.cart.length;
+            }
+        },
+
+        methods:{
+            addToCart(subject) {
+                if (subject.avaliability > 0){
+                    this.cart.push(subject.id);
+                    subject.avaliability--;
+                }
+            }
         }
         })
         myApp.mount('#mydiv')
@@ -211,7 +225,7 @@
     .Subject4{
         position: relative;
         left: 780px;
-        top: -955px;
+        top: -975px;
     }
 
     .Subject5{
@@ -223,7 +237,7 @@
     .Subject6{
         position: relative;
         left: 780px;
-        top: -1400px;
+        top: -1420px;
     }
 
     .Subject7{
@@ -235,7 +249,7 @@
     .Subject8{
         position: relative;
         left: 780px;
-        top: -1845px;
+        top: -1865px;
     }
 
     #groove1 {
@@ -302,6 +316,16 @@
         cursor: pointer;
         position: relative;
         left: 1200px;
+    }
+
+    .CartButtonDesign{
+        background-color: #37f203;
+        color: black;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        position: relative;
+        left: 230px
     }
 
 </style>
