@@ -30,7 +30,7 @@
     <h4>{{subject.description2}}</h4>
     <h4>Price: £{{subject.price}}</h4>
     <h4> Avaliability: {{subject.avaliability}}</h4>
-    <button class = "CartButtonDesign" v-on:click="addItem()" v-show="canAddToCart">Add to Cart</button>
+    <button class = "CartButtonDesign" v-on:click="addToCart()" v-bind="canAddToCart">Add to Cart</button>
 </div>
 
 </div>
