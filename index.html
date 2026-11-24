@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initialscale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <title>After School Subjects</title>
@@ -17,10 +17,11 @@
 <p>{{ CartMessage }}</p>
 </center>
 
-<button class = "ButtonCheckoutDesign" @click="toggleCheckout">
-    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout ({{cartItemCount}})
+<button class = "ButtonCheckoutDesign" @click="toggleCheckout" :disabled="numberOfItems === 0" >
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout ({{numberOfItems}})
 </button>
 
+<template v-if="!displayCart">
 <div v-for="subject in SchoolSubjects"
     :id = "'groove' + subject.id"
     :class = "'Subject' + subject.id">
@@ -28,9 +29,15 @@
     <img :class="'Image' + subject.id" v-bind:src="subject.image">
     <h4>{{subject.description}}</h4>
     <h4>{{subject.description2}}</h4>
+    <h4>Location: {{subject.Location}}</h4>
     <h4>Price: £{{subject.price}}</h4>
     <h4> Avaliability: {{subject.avaliability}}</h4>
-    <button class = "CartButtonDesign" v-on:click="addToCart()" v-bind="canAddToCart">Add to Cart</button>
+    <button class = "CartButtonDesign" v-on:click="addToCart(subject)" v-bind:disabled="!canAddToCart(subject)">Add to Cart</button>
+</div>
+</template>
+
+<div v-else>
+    <h1>Checkout Page</h1>
 </div>
 
 </div>
@@ -45,13 +52,14 @@
             message: 'Hello',
             message2: "Here is the list of all our school subjects avaliable",
             cart: [],
-            
+            displayCart: false,
             SchoolSubjects:[
                 {
                     id: 1,
                     name: "Subject 1: Maths",
                     description: "Purchase maths if your child is interested into the study of numbers and symbols",
                     description2: "Mathematics is the language in which God has written the universe",
+                    Location: "Hendon, United Kingdom",
                     price: 200,
                     image: 'School Images/Maths.png',
                     avaliability: 5,
@@ -60,15 +68,17 @@
                     id: 2,
                     name: "Subject 2: English",
                     description: "Purchase english if your child is interested to improve in writing, reading, spelling, poetry and communication",
+                    Location: "Hendon, United Kingdom",
                     price: 200,
                     image: 'School Images/English.png',
-                    avaliablity: 5,
+                    avaliability: 5,
                 },
                 {
                     id: 3,
                     name: "Subject 3: Science",
                     description: "If you love science and you want to improve on it, science is the way.",
                     description2: "You'll explore experiements, chemicals, nature, earth and more!",
+                    Location: "Hendon, United Kingdom",
                     price: 200,
                     image: 'School Images/Science.png',
                     avaliability: 5,
@@ -77,6 +87,7 @@
                     id: 4,
                     name: "Subject 4: Computer Science",
                     description: "Do you love technology and want to improve your tech skills, do you want to be best at coding, theory and curious about how gadgets, apps and games work. Join our computer science study",
+                    Location: "Hendon, United Kingdom",
                     price: 250,
                     image: 'School Images/Computer Science.png',
                     avaliability: 5, 
@@ -86,6 +97,7 @@
                     name: "Subject 5: Economics",
                     description: "Ecouraging children to work out the economy and to understand the value of goods.",
                     description2: "Figuring out how the economy works and where money comes from",
+                    Location: "Hendon, United Kingdom",
                     price: 150,
                     image: 'School Images/Economics.png',
                     avaliability: 5,
@@ -94,6 +106,7 @@
                     id: 6,
                     name: "Subject 6: Geography",
                     description: "Understanding how the world works, elements that contains the earth making in terms of oceans, countries, capital, cities. Studying human and physical geograpghy to do with farming, cities, trade, climate change",
+                    Location: "Hendon, United Kingdom",
                     price: 100,
                     image: 'School Images/Geography.png',
                     avaliability: 5,
@@ -103,16 +116,17 @@
                     name: "Subject 7: History",
                     description: "Wanna learn historical facts, time periods of anglo saxon period, cold war, nazi germany and many more.",
                     description2: "Learning about the history that shapes britain, russia, germany, china and other countries involved",
+                    Location: "Hendon, United Kingdom",
                     price: 150,
                     image: 'School Images/History.png',
                     avaliability: 5,
                 },
                 {
-
                     id: 8,
                     name: "Subject 8: Religious Studies",
                     description: "Studying christianity, buddasim, islam, jewish, sikhism to understand how they work, how they operate, what they believe in and how it impacts people's lives everyday.",
                     description2: "Interested in the study of religions and about God, this course is for you!",
+                    Location: "Hendon, United Kingdom",
                     price: 100,
                     image: 'School Images/Religious Studies.png',
                     avaliability: 5,
@@ -120,13 +134,21 @@
         ]
         }
         },
+
         computed: {
-            canAddToCart(){
+            canAddToCart() {
+                return (subject) => subject.avaliability > 0;
+            },
+            numberOfItems:function(){
                 return this.cart.length;
             }
         },
 
-        methods:{
+        methods: {
+            toggleCheckout() {
+                this.displayCart = !this.displayCart;
+            },
+
             addToCart(subject) {
                 if (subject.avaliability > 0){
                     this.cart.push(subject.id);
@@ -213,7 +235,7 @@
     .Subject2{
         position: relative;
         left: 780px;
-        top: -505px;
+        top: -555px;
     }
 
     .Subject3{
@@ -225,7 +247,7 @@
     .Subject4{
         position: relative;
         left: 780px;
-        top: -975px;
+        top: -1015px;
     }
 
     .Subject5{
@@ -237,7 +259,7 @@
     .Subject6{
         position: relative;
         left: 780px;
-        top: -1420px;
+        top: -1460px;
     }
 
     .Subject7{
@@ -249,7 +271,7 @@
     .Subject8{
         position: relative;
         left: 780px;
-        top: -1865px;
+        top: -1905px;
     }
 
     #groove1 {
