@@ -36,8 +36,26 @@
 </div>
 </template>
 
-<div v-else>
-    <h1>Checkout Page</h1>
+<div id = "app" v-else>
+
+    <center>
+    <p>First name: <input v-model="firstname"></p>
+    <p>Last name: <input v-model="lastname"></p>
+    <p>Phone number: <input v-model="phonenumber"></p>
+    <center>
+
+    <button :disabled = "CheckoutButtonDisabled" class = "CheckoutButtonSubmit"> Checkout Submit </button>
+
+    
+    <h1>Checkout Page for Subject Lessons</h1>
+    
+    <h1>Order items - Name</h1>
+    <h1>Order items - Phone number</h1>
+
+    <button class = "BackButton" @click="goback"> Back
+        
+    </button>
+
 </div>
 
 </div>
@@ -48,7 +66,9 @@
 
         data() {
         return {
-            CartMessage: "Cart",
+            firstname: "",
+            lastname: "",
+            phonenumber: "",
             message: 'Hello',
             message2: "Here is the list of all our school subjects avaliable",
             cart: [],
@@ -131,20 +151,49 @@
                     image: 'School Images/Religious Studies.png',
                     avaliability: 5,
                 },
+                {
+                    id: 9,
+                    name: "Subject 9: Design and Technology",
+                    description: "Design and Technology (DT) is about designing, creating and developing practical products using creativity, technical knowledge, materials and problem-solving skills to meet everyday needs.",
+                    price: 100,
+                    image: 'School Images/.png',
+                    avaliability: 5,
+                },
+                {
+                    id: 10,
+                    name: "Subject 10: Design and Technology",
+                    description: "Physical Education (PE) is about developing physical fitness, learning sports skills and understanding the importance of exercise, teamwork and a healthy lifestyle",
+                    price: 100,
+                    image: 'School Images/.png',
+                    avaliability: 5,
+                },
         ]
         }
         },
 
         computed: {
-            canAddToCart() {
+            canAddToCart(subject) {
                 return (subject) => subject.avaliability > 0;
             },
             numberOfItems:function(){
                 return this.cart.length;
+            },
+            CheckoutButtonDisabled(){
+                return !this.firstname || !this.lastname || !this.phonenumber;
+            },
+            fullname(){
+                return this.firstname + " " + this.lastname;
+            },
+            phonenumber(){
+                return this.phonenumber;
             }
         },
 
         methods: {
+            goback(){
+                this.displayCart = false;
+            },
+
             toggleCheckout() {
                 this.displayCart = !this.displayCart;
             },
@@ -162,6 +211,7 @@
 </script>
 
 <style>
+
     body {
         background-color: #02ff9e;
     }
@@ -226,6 +276,20 @@
         left: 110px;
     }
 
+    .Image9{
+        width: 300px;
+        height: 300px;
+        position: relative;   
+        left: 110px;
+    }
+
+    .Image10{
+        width: 300px;
+        height: 300px;
+        position: relative;   
+        left: 110px;
+    }
+
     .Subject1{
         position: relative;
         left: 50px;
@@ -269,6 +333,18 @@
     }
 
     .Subject8{
+        position: relative;
+        left: 780px;
+        top: -1905px;
+    }
+
+    .Subject9{
+        position: relative;
+        left: 780px;
+        top: -1905px;
+    }
+
+    .Subject10{
         position: relative;
         left: 780px;
         top: -1905px;
@@ -330,6 +406,20 @@
         border-color: #e90de1
     }
 
+    #groove9 {
+        border-width: 15px;
+        width: 560px;
+        border-style: groove;
+        border-color: #e90de1
+    }
+
+    #groove10 {
+        border-width: 15px;
+        width: 560px;
+        border-style: groove;
+        border-color: #e90de1
+    }
+
     .ButtonCheckoutDesign{
         background-color: #e10707;
         color: black;
@@ -348,6 +438,26 @@
         cursor: pointer;
         position: relative;
         left: 230px
+    }
+
+    .BackButton{
+        background-color: #4d2502;
+        color: black;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        position: relative;
+        left: 20px
+    }
+
+    .CheckoutButtonSubmit{
+        background-color: #cee904;
+        color: black;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        position: relative;
+        left: 80px
     }
 
 </style>
